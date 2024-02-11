@@ -7,10 +7,10 @@ export def install-packages [] {
 	if (which paru | length) == 0 { install-paru }
 
 	print "installing pacman packages"
-	paru ...$packages
+	paru -Sy ...$packages
 
 	print "installing aur packages"
-	paru ...$aur_packages
+	paru -Sy ...$aur_packages
 }
 
 def install-paru [] {
