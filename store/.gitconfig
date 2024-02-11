@@ -1,0 +1,13 @@
+[user]
+	name = $git_name
+	email = $git_email
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[core]
+	editor = micro
+[init]
+	defaultBranch = main

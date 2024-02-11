@@ -1,0 +1,7 @@
+shell="nu"
+
+[window]
+blur = true
+
+[font]
+size = $alacritty_font_size
