@@ -151,6 +151,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # move workspace to another monitor
+bindsym $mod+apostrophe focus output left
 bindsym $mod+bracketleft move container to output left
 bindsym $mod+bracketright move container to output right
 bindsym $mod+Shift+bracketleft move workspace to output left

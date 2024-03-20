@@ -25,7 +25,8 @@ alias pachelp = xdg-open https://wiki.archlinux.org/title/pacman
 alias paclogs = m /var/log/pacman.log
 alias fuckteams = pkill -f teams
 # alias grayscale = bash $HOME/.config/polybar/toggle-monitor-grayscale.sh
-def gource-ffmpeg [] { gource -f -a 1 -c 4 -r 60 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -s 1920x1080 -preset fast -crf 18 -threads 0 -bf 0 -pix_fmt yuv420p -movflags +faststart output.mp4 }
+alias gource = gource -f -a 1 -c 4 -r 60
+def gource-ffmpeg [] { gource -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -s 1920x1080 -preset fast -crf 18 -threads 0 -bf 0 -pix_fmt yuv420p -movflags +faststart output.mp4 }
 alias gitlog = git log --online --graph
 def m-all-files [path: string = ""] { cd $path; m ...(ls | get name | filter {|x| $x =~ '\.'}) };
 def discord-cache-links [until: datetime, take: int = 10] { 

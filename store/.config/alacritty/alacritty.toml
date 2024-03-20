@@ -5,3 +5,9 @@ blur = true
 
 [font]
 size = $alacritty_font_size
+
+[keyboard]
+bindings=[
+	{ key ="F", mods="Control", action="SearchForward" },
+	{ key ="B",	mods="Control", action="SearchBackward"},
+]
