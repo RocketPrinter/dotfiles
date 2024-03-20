@@ -37,6 +37,12 @@ exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -B 5 -k --t
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# playerctl
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -48,7 +54,6 @@ bindsym $mod+q kill
 
 # A more modern dmenu replacement is rofi:
 bindsym $mod+d exec "rofi -show drun"
-# temp \/
 bindsym $mod+Shift+d exec "~/.config/rofi/launchers/type-6/launcher.sh"
 bindsym $mod+Tab exec "rofi -show window"
 bindsym $mod+Escape exec "~/.config/rofi/powermenu/type-5/powermenu.sh"
