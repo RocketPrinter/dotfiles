@@ -35,12 +35,13 @@ export def rofi [] {
 	open $powermenu | str replace -r "i3lock(?!').*$" 'i3lock -B 5 -k --time-color=FFFFFF --date-color=FFFFFF' | save -f $powermenu
 }
 
-def install-paru [] {
+export def install-paru [] {
 	print "Installing paru"
-	mkdir /temp/dotfiles
-	cd /temp/dotfiles
+	mkdir /tmp/dotfiles
+	cd /tmp/dotfiles
 	sudo pacman -S --needed base-devel
-	git clone https://aur.archlinux.org/paru.git
+	sudo git clone https://aur.archlinux.org/paru.git
+	sudo chmod -R a+rwx paru
 	cd paru
 	makepkg -si
 }

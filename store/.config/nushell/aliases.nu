@@ -20,7 +20,7 @@ def bth  [] { echo "power on\nconnect 30:53:C1:66:A9:BB" | bluetoothctl }
 alias lock = light-locker-command -l
 alias hibernate = systemctl hibernate
 alias wifi = nmcli device wifi
-alias hotspot = nmcli device wifi connect "Duba SRI"
+def hotspot [] { nmcli device wifi; nmcli device wifi connect "Duba SRI" }
 alias pachelp = xdg-open https://wiki.archlinux.org/title/pacman
 alias paclogs = m /var/log/pacman.log
 alias fuckteams = pkill -f teams

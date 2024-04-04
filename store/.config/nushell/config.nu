@@ -765,5 +765,3 @@ $env.config = {
 use ~/.cache/starship/init.nu
 source ~/.config/nushell/aliases.nu
 use ~/.config/dotfiles
-
-use '/home/calio/.config/broot/launcher/nushell/br' *
