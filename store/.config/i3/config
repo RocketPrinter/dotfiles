@@ -193,12 +193,19 @@ exec_always --no-startup-id setxkbmap  -model pc104 -layout us,ro
 
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.nu
+
 # usb auto mount
 exec_always --no-startup-id udiskie
 
 # keys
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
+
+exec qalculate-gtk
+for_window [class="Qalculate-gtk"] move scratchpad
+for_window [class="Qalculate-gtk"] floating enable
+for_window [class="copyq"] resize set 400 400
+bindsym $mod+equal scratchpad show
 
 exec firefox
 
@@ -210,6 +217,8 @@ exec copyq
 bindsym $mod+c exec copyq toggle
 for_window [class="copyq"] floating enable
 for_window [class="copyq"] resize set 450 700
+
+# exec_always --no-startup-id redshift-gtk
 
 bindsym $mod+p sticky toggle
 bindsym $mod+l exec xkb-switch -n
