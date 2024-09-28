@@ -4,6 +4,7 @@ alias puro   = paru
 alias m      = micro
 alias bottom = btm
 alias repl   = evcxr
+alias y      = yazi
 
 # replacing cat with bat
 alias cat = bat
@@ -17,9 +18,9 @@ alias brightness = sudo micro /sys/class/backlight/intel_backlight/brightness
 alias bt = bluetoothctl
 def btdc [] { echo "disconnect" | bluetoothctl }
 def bth  [] { echo "power on\nconnect 30:53:C1:66:A9:BB" | bluetoothctl }
-alias lock = light-locker-command -l
 alias hibernate = systemctl hibernate
 alias wifi = nmcli device wifi
+alias df = df -h
 def hotspot [] {
 	loop {
 		nmcli device wifi rescan ssid "Duba SRI"
@@ -32,7 +33,6 @@ def hotspot [] {
 alias pachelp = xdg-open https://wiki.archlinux.org/title/pacman
 alias paclogs = m /var/log/pacman.log
 alias fuckteams = pkill -f teams
-# alias grayscale = bash $HOME/.config/polybar/toggle-monitor-grayscale.sh
 alias gource = gource -f -a 1 -c 4 -r 60
 def gource-ffmpeg [] { gource -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -s 1920x1080 -preset fast -crf 18 -threads 0 -bf 0 -pix_fmt yuv420p -movflags +faststart output.mp4 }
 alias gitlog = git log --online --graph
@@ -45,6 +45,10 @@ def discord-cache-links [until: datetime, take: int = 10] {
 	| take $take 
 	| insert link {|row| (strings $row.name | lines).0 | str substring 4.. | str replace -r "\\?.*" ""} 
 	| select modified link
+}
+def clamscan-root [] {
+	sudo freshclam
+	sudo clamscan --recursive --exclude-dir='^/sys|^/dev' --infected /
 }
 
 # fun uwu
