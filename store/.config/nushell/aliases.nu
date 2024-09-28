@@ -4,7 +4,6 @@ alias puro   = paru
 alias m      = micro
 alias bottom = btm
 alias repl   = evcxr
-alias y      = yazi
 
 # replacing cat with bat
 alias cat = bat
@@ -50,6 +49,16 @@ def clamscan-root [] {
 	sudo freshclam
 	sudo clamscan --recursive --exclude-dir='^/sys|^/dev' --infected /
 }
+def --env y [...args] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+	yazi ...$args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -fp $tmp
+}
+alias yazi = y
 
 # fun uwu
 def gmatrix  [] { cmatrix | lolcat -p 5 -F 0.0005 -i }
