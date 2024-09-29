@@ -1,7 +1,7 @@
 shell="nu"
 
 [window]
-blur = true
+opacity = 0.9
 
 [font]
 size = $alacritty_font_size
