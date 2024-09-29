@@ -7,7 +7,6 @@ let monitors = xrandr -q
 | ansi strip 
 | parse "{name} connected {rest}" 
 | insert primary {|row| $row.rest | str starts-with "primary" }
-| update name {str upcase} # find lowers all text due to a bug in nushell
 
 print $monitors
 
