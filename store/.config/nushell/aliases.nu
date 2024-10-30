@@ -1,4 +1,4 @@
-# renames
+ # renames
 alias cls    = clear
 alias puro   = paru
 alias m      = micro
@@ -28,6 +28,10 @@ def hotspot [] {
 		if $result.exit_code == 0 { break; }
 		sleep 0.5sec
 	}
+}
+def eduroam [] {
+	try { sudo pkill wpa_supplicant }
+	sudo wpa_supplicant -B -i wlp2s0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 }
 alias pachelp = xdg-open https://wiki.archlinux.org/title/pacman
 alias paclogs = m /var/log/pacman.log
@@ -59,6 +63,15 @@ def --env y [...args] {
 	rm -fp $tmp
 }
 alias yazi = y
+def "term split" [-h, -v] {
+	match [$h, $v] {
+		[true, true]  => { error make { msg: "Can't use -h and -v at the same time" } }
+		[true, false] => { i3-msg split h }
+		[false, true] => { i3-msg split v }
+	}
+
+	bash -c "alacritty &"
+}
 
 # fun uwu
 def gmatrix  [] { cmatrix | lolcat -p 5 -F 0.0005 -i }
