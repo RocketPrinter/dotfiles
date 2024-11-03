@@ -1,0 +1,26 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "vim_mode": false,
+  "autosave": "on_focus_change",
+  "theme": "Ayu Mirage",
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "inlay_hints": { "enabled": true },
+  "telemetry": { "metrics": false },
+  "double_click_in_multibuffer": "open",
+  "format_on_save": "off"
+}

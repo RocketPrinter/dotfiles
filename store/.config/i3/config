@@ -99,6 +99,7 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+space floating toggle
+bindsym $mod+p sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+shift+space focus mode_toggle
@@ -172,10 +173,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -200,11 +201,16 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
+# extra keys
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
+
 # compositor
 exec_always --no-startup-id picom --inactive-opacity 1.0
 
-# keyboard layouts
+# keyboard
 exec_always --no-startup-id setxkbmap  -model pc104 -layout us,ro
+bindsym $mod+l exec xkb-switch -n
 
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.nu
@@ -212,9 +218,24 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.nu
 # usb auto mount
 exec_always --no-startup-id udiskie
 
-# keys
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
+# background
+exec_always --no-startup-id nitrogen --restore
+
+# screenshots
+exec-always flameshot
+bindsym Print exec flameshot gui
+bindsym Shift+Print exec flameshot gui -d 3000
+
+# clipboard
+exec copyq
+bindsym $mod+c exec copyq toggle
+for_window [class="copyq"] floating enable
+for_window [class="copyq"] resize set 450 700
+
+# switch to workspace when window wants focus
+for_window [urgent="latest" class="firefox"] focus
+
+# exec_always --no-startup-id redshift-gtk
 
 # kinda buggy, revisit
 # exec qalculate-gtk
@@ -225,19 +246,4 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
 
 exec firefox
 
-exec-always flameshot
-bindsym Print exec flameshot gui
-bindsym Print+Shift exec flameshot gui -d 3000
-
-exec copyq
-bindsym $mod+c exec copyq toggle
-for_window [class="copyq"] floating enable
-for_window [class="copyq"] resize set 450 700
-
-# exec_always --no-startup-id redshift-gtk
-
-bindsym $mod+p sticky toggle
-bindsym $mod+l exec xkb-switch -n
-
-# switch to workspace when window wants focus
-for_window [urgent="latest" class="firefox"] focus
+# bindsym $mod+g [class="vesktop"] focus
