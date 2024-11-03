@@ -1,4 +1,5 @@
-shell="nu"
+[terminal]
+shell = "nu"
 
 [window]
 opacity = 0.9
