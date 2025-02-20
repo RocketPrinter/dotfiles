@@ -8,6 +8,9 @@ export def packages [] {
 
 	if (which paru | length) == 0 { install-paru }
 	paru -Sy --needed ...$packages
+
+	mkdir .local/share/atuin
+	atuin init nu | save .local/share/atuin/init.nu
 }
 
 export def aur [] {
