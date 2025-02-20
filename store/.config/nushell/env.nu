@@ -97,7 +97,9 @@ path add ($env.HOME | path join ".cargo/bin")
 # path add ($env.HOME | path join ".local" "bin")
 # $env.PATH = ($env.PATH | uniq)
 
+$env.LANG = "LANG=en_US.UTF-8"
 $env.EDITOR = "micro"
+$env.DEBUGINFOD_URLS = "https://debuginfod.archlinux.org" # for valgrind
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
