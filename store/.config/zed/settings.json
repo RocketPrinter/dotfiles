@@ -15,6 +15,7 @@
   "theme": "Ayu Mirage",
   "ui_font_size": 16,
   "buffer_font_size": 16,
+  "tab_size": 4,
   "tabs": {
     "file_icons": true,
     "git_status": true
@@ -22,5 +23,14 @@
   "inlay_hints": { "enabled": true },
   "telemetry": { "metrics": false },
   "double_click_in_multibuffer": "open",
-  "format_on_save": "off"
+  "format_on_save": "off",
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "checkOnSave": {
+          "command": "clippy"
+        }
+      }
+    }
+  }
 }

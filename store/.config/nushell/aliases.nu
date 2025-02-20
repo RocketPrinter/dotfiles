@@ -13,6 +13,7 @@ def polybar-show-wifi [] { open --raw ~/.config/polybar/config.ini | str replace
 def polybar-hide-wifi [] { open --raw ~/.config/polybar/config.ini | str replace '直%{F-} %essid%' '直%{F-}' | save ~/.config/polybar/config.ini -f }
 
 # utilities
+alias btop = btop --utf-force
 alias brightness = sudo micro /sys/class/backlight/intel_backlight/brightness
 alias bt = bluetoothctl
 def btdc [] { echo "disconnect" | bluetoothctl }

@@ -74,6 +74,13 @@ bluetooth_connect() {
 	done
 }
 
+bluetooth_disconnect() {
+	devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
+	echo "$devices_paired" | while read -r line; do
+		bluetoothctl disconnect "$line" >> /dev/null
+	done	
+}
+
 bluetooth_toggle() {
     if bluetoothctl show | grep -q "Powered: no"; then
         bluetoothctl power on >> /dev/null
@@ -96,6 +103,9 @@ case "$1" in
         ;;
     --connect)
 		bluetooth_connect
+    	;;
+    --disconnect)
+    	bluetooth_disconnect
     	;;
     *)
         bluetooth_print
