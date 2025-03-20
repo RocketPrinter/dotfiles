@@ -228,7 +228,7 @@ bindsym $mod+c exec copyq toggle
 for_window [class="copyq"] floating enable
 for_window [class="copyq"] resize set 450 700
 
-exec --no-startup-id spotify
+exec --no-startup-id spotify --no-zygote
 for_window [class="Spotify"] move scratchpad
 bindsym $mod+shift+s [class="Spotify"] scratchpad show
 
