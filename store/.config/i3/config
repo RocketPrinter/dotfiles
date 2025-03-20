@@ -170,7 +170,11 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 
-bindsym $mod+z               exec --no-startup-id playerctl play-pause
+bindsym $mod+x       exec --no-startup-id playerctl play-pause
+bindsym $mod+shift+x exec --no-startup-id playerctl --player=spotify play-pause
+bindsym $mod+z       exec --no-startup-id playerctl previous
+bindsym $mod+shift+z exec --no-startup-id playerctl next
+
 bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause       exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext        exec --no-startup-id playerctl next
@@ -213,7 +217,9 @@ exec_always --no-startup-id udiskie
 
 exec_always --no-startup-id playerctld daemon
 
-exec-always --no-startup-id flameshot
+exec_always --no-startup-id "pkill openrgb; openrgb --startminimized"
+
+exec --no-startup-id flameshot
 bindsym Print exec flameshot gui
 bindsym Shift+Print exec flameshot gui -d 3000
 

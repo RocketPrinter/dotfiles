@@ -2,6 +2,7 @@
 alias cls    = clear
 alias puro   = paru
 alias m      = micro
+alias d      = dragon-drop
 alias bottom = btm
 alias repl   = evcxr
 
@@ -9,7 +10,7 @@ alias repl   = evcxr
 alias cat = bat
 
 # polybar
-def polybar-show-wifi [] { open --raw ~/.config/polybar/config.ini | str replace -r '直%{F-}(?!\ )' '直%{F-} %essid%' | save ~/.config/polybar/config.ini -f }
+def polybar-show-wifi [] { open --raw ~/.config/polybar/config.ini | str replace -r '直%{F-}' '直%{F-} %essid%' | save ~/.config/polybar/config.ini -f }
 def polybar-hide-wifi [] { open --raw ~/.config/polybar/config.ini | str replace '直%{F-} %essid%' '直%{F-}' | save ~/.config/polybar/config.ini -f }
 
 # utilities
@@ -63,7 +64,7 @@ def --env y [...args] {
 	}
 	rm -fp $tmp
 }
-alias yazi = y
+alias yazi   = y
 def "term split" [-h, -v] {
 	match [$h, $v] {
 		[true, true]  => { error make { msg: "Can't use -h and -v at the same time" } }
@@ -72,6 +73,13 @@ def "term split" [-h, -v] {
 	}
 
 	bash -c "alacritty &"
+}
+def "download here" [dest: string = "."] {
+	watch ~/downloads {|op, path, new_path|
+		if ($op == "Rename" and ($path | path parse).extension == "part" and ($new_path | path parse) != "part") {
+			mv --verbose $new_path $dest
+		} 
+	}
 }
 
 # fun uwu
