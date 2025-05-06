@@ -202,8 +202,9 @@ bindsym $mod+Shift+l exec xkb-switch -n
 
 # programs
 bindsym $mod+t exec alacritty
-bindsym $mod+ctrl+shift+$alt+l exec xdg-open "https://www.linkedin.com/"
+bindsym $mod+Shift+t exec ".config/i3/point-to-cwd-and-open-term.nu"
 
+bindsym $mod+ctrl+shift+$alt+l exec xdg-open "https://www.linkedin.com/"
 
 ### BACKGROUND APPS ###
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -B 5 -k --time-color=FFFFFF --date-color=FFFFFF
