@@ -81,6 +81,7 @@ def "download here" [dest: string = "."] {
 		} 
 	}
 }
+alias new-audio-sink = pactl load-module module-null-sink media.class=Audio/Sink sink_name=sink channel_map=stereo
 
 # fun uwu
 def gmatrix  [] { cmatrix | lolcat -p 5 -F 0.0005 -i }

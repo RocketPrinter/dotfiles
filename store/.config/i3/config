@@ -2,6 +2,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 ### WINDOW MANAGEMENT ###
 
@@ -201,7 +202,7 @@ bindsym $mod+Shift+l exec xkb-switch -n
 
 # programs
 bindsym $mod+t exec alacritty
-
+bindsym $mod+ctrl+shift+$alt+l exec xdg-open "https://www.linkedin.com/"
 
 
 ### BACKGROUND APPS ###
