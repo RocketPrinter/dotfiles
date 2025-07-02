@@ -7,7 +7,6 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "icon_theme": "Colored Zed Icons Theme Dark",
   "features": {
     "edit_prediction_provider": "none"
   },
@@ -28,9 +27,10 @@
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
-        "checkOnSave": {
-          "command": "clippy"
-        }
+        "check": {
+            "command" : "clippy"
+        },
+        "checkOnSave": true
       }
     }
   }

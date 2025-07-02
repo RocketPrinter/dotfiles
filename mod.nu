@@ -60,7 +60,7 @@ export def "list vars" [] {
 		| each {|e| [[var, file]; [$e,$row.path]] }
 		}
 	| flatten | flatten
-	| insert value {|row| $kvp | get -si $row.var} 
+	| insert value {|row| $kvp | get -i $row.var} 
 }
 
 # Builds all templates and places symlinks
@@ -130,7 +130,7 @@ def apply-file [rec: record, vars: record] {
 		# creating .generated file
 		let comment = ( ($rec.comment | str replace 's' $"DO NOT EDIT, file is generated from template at ($store_path)" ) + "\n" )
 		mut file = ($comment + (open $store_path --raw) )
-		let vars = ($file | extract-vars $rec.symbol | insert value {|row| $vars | get -si $row.trimmed } )
+		let vars = ($file | extract-vars $rec.symbol | insert value {|row| $vars | get -i $row.trimmed } )
 		for v in $vars {
 			if $v.value? == null {
 				print $"warning: variable \'($v.trimmed)\' not set"

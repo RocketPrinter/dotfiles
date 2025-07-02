@@ -26,16 +26,16 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+shift+s layout stacking
+bindsym $mod+w       layout tabbed
+bindsym $mod+e       layout toggle split
 
 # hold to move windows with left click, resize with right click
 floating_modifier $mod
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle
-bindsym $mod+p     sticky toggle
+bindsym $mod+space   floating toggle
+bindsym $mod+shift+p sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+shift+space focus mode_toggle
@@ -159,11 +159,11 @@ font pango:DejaVu Sans Mono 8
 ### MISC BINDINGS ###
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # sound
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -182,13 +182,18 @@ bindsym XF86AudioNext        exec --no-startup-id playerctl next
 bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
 bindsym XF86AudioStop        exec --no-startup-id playerctl stop
 
+# bt
+bindsym $mod+b       exec ~/.config/polybar/system-bluetooth-bluetoothctl.sh --connect
+bindsym $mod+shift+b exec ~/.config/polybar/system-bluetooth-bluetoothctl.sh --disconnect
+bindsym $mod+$alt+b  exec ~/.config/polybar/system-bluetooth-bluetoothctl.sh --toggle
+
 # brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight +5
 
 # rofi
 bindsym $mod+d       exec "rofi -show drun"
-bindsym $mod+Shift+d exec "~/.config/rofi/launchers/type-6/launcher.sh"
+bindsym $mod+shift+d exec "~/.config/rofi/launchers/type-6/launcher.sh"
 bindsym $mod+Tab     exec "rofi -show window"
 bindsym $mod+Escape  exec "~/.config/rofi/powermenu/type-5/powermenu.sh"
 bindsym $mod+period  exec rofimoji
@@ -198,11 +203,11 @@ bindsym $mod+l exec i3lock -B 5 -k --time-color=FFFFFF --date-color=FFFFFF
 
 # keyboard
 #exec_always --no-startup-id setxkbmap -model pc104 -layout us,ro
-bindsym $mod+Shift+l exec xkb-switch -n
+bindsym $mod+k exec xkb-switch -n
 
 # programs
 bindsym $mod+t exec alacritty
-bindsym $mod+Shift+t exec ".config/i3/point-to-cwd-and-open-term.nu"
+bindsym $mod+shift+t exec ".config/i3/point-to-cwd-and-open-term.nu"
 
 bindsym $mod+ctrl+shift+$alt+l exec xdg-open "https://www.linkedin.com/"
 
@@ -210,6 +215,7 @@ bindsym $mod+ctrl+shift+$alt+l exec xdg-open "https://www.linkedin.com/"
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -B 5 -k --time-color=FFFFFF --date-color=FFFFFF
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.nu
+bindsym $mod+p exec $HOME/.config/polybar/launch.nu --toggle-focus
 
 exec_always --no-startup-id picom --inactive-opacity 1.0
 
@@ -223,7 +229,7 @@ exec_always --no-startup-id "pkill openrgb; openrgb --startminimized"
 
 exec --no-startup-id flameshot
 bindsym Print exec flameshot gui
-bindsym Shift+Print exec flameshot gui -d 3000
+bindsym shift+Print exec flameshot gui -d 3000
 
 exec --no-startup-id copyq
 bindsym $mod+c exec copyq toggle
@@ -232,11 +238,18 @@ for_window [class="copyq"] resize set 450 700
 
 exec --no-startup-id spotify --no-zygote
 for_window [class="Spotify"] move scratchpad
-bindsym $mod+shift+s [class="Spotify"] scratchpad show
+bindsym $mod+s [class="Spotify"] scratchpad show
 
 exec --no-startup-id qalculate-gtk
 for_window [class="Qalculate-gtk"] move scratchpad
 bindsym $mod+m [class="Qalculate-gtk"] scratchpad show
+
+exec --no-startup-id signal-desktop
+
+#exec --no-startup-id "alacritty --class Alacritty_floating -e /usr/bin/nu -i -c zellij"
+# bindsym $mod+shift+j mark --replace --toggle floating_term
+#for_window [class=Alacritty_floating] move scratchpad
+#bindsym $mod+j [class=Alacritty_floating] scratchpad show
 
 # TODO
 # exec_always --no-startup-id redshift-gtk
@@ -250,4 +263,6 @@ bindsym $mod+m [class="Qalculate-gtk"] scratchpad show
 ### MAIN APPS ###
 
 exec vesktop
+bindsym $mod+shift+m exec "~/.config/i3/discord.nu"
+
 exec zen-browser

@@ -5,6 +5,7 @@ alias m      = micro
 alias d      = dragon-drop
 alias bottom = btm
 alias repl   = evcxr
+alias zel    = zellij
 
 # replacing cat with bat
 alias cat = bat
@@ -14,7 +15,7 @@ def polybar-show-wifi [] { open --raw ~/.config/polybar/config.ini | str replace
 def polybar-hide-wifi [] { open --raw ~/.config/polybar/config.ini | str replace '直%{F-} %essid%' '直%{F-}' | save ~/.config/polybar/config.ini -f }
 
 # utilities
-alias btop = btop --utf-force
+alias btop = btop --force-utf
 alias brightness = sudo micro /sys/class/backlight/intel_backlight/brightness
 alias bt = bluetoothctl
 def btdc [] { echo "disconnect" | bluetoothctl }
@@ -41,7 +42,7 @@ alias fuckteams = pkill -f teams
 alias gource = gource -f -a 1 -c 4 -r 60
 def gource-ffmpeg [] { gource -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -s 1920x1080 -preset fast -crf 18 -threads 0 -bf 0 -pix_fmt yuv420p -movflags +faststart output.mp4 }
 alias gitlog = git log --online --graph
-def m-all-files [path: string = ""] { cd $path; m ...(ls | get name | filter {|x| $x =~ '\.'}) };
+def m-all-files [path: string = ""] { cd $path; m ...(ls | get name | where {|x| $x =~ '\.'}) };
 def discord-cache-links [until: datetime, take: int = 10] { 
 	echo $"Cache files before ($until):"; 
 	ls ~/.config/discord/Cache/Cache_Data/ 
