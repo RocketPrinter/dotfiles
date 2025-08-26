@@ -56,11 +56,11 @@ export def "list vars" [] {
 	| each {|row| 
 		open --raw (to-store-path $row.path) 
 		| extract-vars $row.symbol 
-		| get -i trimmed
+		| get -o trimmed
 		| each {|e| [[var, file]; [$e,$row.path]] }
 		}
 	| flatten | flatten
-	| insert value {|row| $kvp | get -i $row.var} 
+	| insert value {|row| $kvp | get -o $row.var} 
 }
 
 # Builds all templates and places symlinks
@@ -87,7 +87,7 @@ export def gen-local-config [--force(-f)] {
 		| path join (to-store-path $rec.path) 
 		| open --raw 
 		| extract-vars $rec.symbol 
-		| get -i trimmed 
+		| get -o trimmed 
 		}
 	| flatten
 	| sort
@@ -130,7 +130,7 @@ def apply-file [rec: record, vars: record] {
 		# creating .generated file
 		let comment = ( ($rec.comment | str replace 's' $"DO NOT EDIT, file is generated from template at ($store_path)" ) + "\n" )
 		mut file = ($comment + (open $store_path --raw) )
-		let vars = ($file | extract-vars $rec.symbol | insert value {|row| $vars | get -i $row.trimmed } )
+		let vars = ($file | extract-vars $rec.symbol | insert value {|row| $vars | get -o $row.trimmed } )
 		for v in $vars {
 			if $v.value? == null {
 				print $"warning: variable \'($v.trimmed)\' not set"

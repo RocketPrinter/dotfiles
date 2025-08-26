@@ -21,7 +21,7 @@ alias bt = bluetoothctl
 def btdc [] { echo "disconnect" | bluetoothctl }
 def bth  [] { echo "power on\nconnect 30:53:C1:66:A9:BB" | bluetoothctl }
 alias hibernate = systemctl hibernate
-alias wifi = nmcli device wifi
+alias wifi = nmcli --ask device wifi
 alias df = df -h
 def hotspot [] {
 	loop {
