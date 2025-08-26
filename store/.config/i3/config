@@ -202,8 +202,9 @@ bindsym $mod+period  exec rofimoji
 bindsym $mod+l exec i3lock -B 5 -k --time-color=FFFFFF --date-color=FFFFFF
 
 # keyboard
-#exec_always --no-startup-id setxkbmap -model pc104 -layout us,ro
-bindsym $mod+k exec xkb-switch -n
+bindsym $mod+k exec xkb-switch -n; exec notify-send -t 1000 -i none "Keyboard language: $(xkb-switch)"
+
+bindsym $mod+$alt+z exec boomer
 
 # programs
 bindsym $mod+t exec alacritty
@@ -226,6 +227,8 @@ exec_always --no-startup-id udiskie
 exec_always --no-startup-id playerctld daemon
 
 exec_always --no-startup-id "pkill openrgb; openrgb --startminimized"
+
+exec_always --no-startup-id dunst
 
 exec --no-startup-id flameshot
 bindsym Print exec flameshot gui

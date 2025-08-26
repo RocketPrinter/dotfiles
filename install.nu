@@ -17,7 +17,7 @@ export def packages [] {
 }
 
 export def aur [] {
-	const aur_packages = [paru, downgrade, onlyoffice-bin, clion, graphite-gtk-theme, xkb-switch, selectdefaultapplication-git, i3lock-color, insomnia-bin, vesktop-bin, zen-browser]
+	const aur_packages = [paru, downgrade, onlyoffice-bin, clion, graphite-gtk-theme, xkb-switch, selectdefaultapplication-git, i3lock-color, insomnia-bin, vesktop-bin, zen-browser, boomer-git]
 
 	if (which paru | length) == 0 { install-paru }
 	for pkg in $aur_packages {
