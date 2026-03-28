@@ -7,31 +7,42 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "features": {
-    "edit_prediction_provider": "none"
-  },
-  "vim_mode": false,
-  "autosave": "on_focus_change",
-  "theme": "Ayu Mirage",
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "tab_size": 4,
-  "tabs": {
-    "file_icons": true,
-    "git_status": true
-  },
-  "inlay_hints": { "enabled": true },
-  "telemetry": { "metrics": false },
-  "double_click_in_multibuffer": "open",
-  "format_on_save": "off",
-  "lsp": {
-    "rust-analyzer": {
-      "initialization_options": {
-        "check": {
-            "command" : "clippy"
+    "edit_predictions": {
+        "provider": "none"
+    },
+    "tab_bar": {
+        "show": true
+    },
+    "icon_theme": "Colored Zed Icons Theme Dark",
+    "disable_ai": true,
+    "vim_mode": false,
+    "autosave": "on_focus_change",
+    "theme": "Catppuccin Frappé",
+    "ui_font_size": 16,
+    "buffer_font_size": 16,
+    "tab_size": 4,
+    "tabs": {
+        "file_icons": true,
+        "git_status": true
+    },
+    "inlay_hints": { "enabled": true },
+    "telemetry": { "metrics": false },
+    "double_click_in_multibuffer": "open",
+    "format_on_save": "off",
+    "lsp": {
+        "rust-analyzer": {
+            "initialization_options": {
+                "check": {
+                    "command": "clippy"
+                },
+                "checkOnSave": true
+            }
         },
-        "checkOnSave": true
-      }
+        "dart": {
+            "binary": {
+                "path": "/home/calio/fvm/versions/3.41.0/bin/dart",
+                "arguments": ["language-server", "--protocol=lsp"]
+            }
+        }
     }
-  }
 }

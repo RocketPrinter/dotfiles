@@ -35,7 +35,8 @@ $env.PROMPT_COMMAND_RIGHT = {||
     ([$last_exit_code, (char space), $time_segment] | str join)
 }
 use std "path add"
-path add ($env.HOME | path join ".cargo/bin")
+path add ".cargo/bin" ".dotnet/tools"
+
 
 # $env.LANG = "LANG=en_US.UTF-8"
 $env.EDITOR = "micro"

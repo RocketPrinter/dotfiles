@@ -39,7 +39,7 @@ def eduroam [] {
 alias pachelp = xdg-open https://wiki.archlinux.org/title/pacman
 alias paclogs = m /var/log/pacman.log
 alias fuckteams = pkill -f teams
-alias gource = gource -f -a 1 -c 4 -r 60
+alias gource = gource -f -a 1 -c 8 -r 60
 def gource-ffmpeg [] { gource -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -s 1920x1080 -preset fast -crf 18 -threads 0 -bf 0 -pix_fmt yuv420p -movflags +faststart output.mp4 }
 alias gitlog = git log --online --graph
 def m-all-files [path: string = ""] { cd $path; m ...(ls | get name | where {|x| $x =~ '\.'}) };
@@ -83,6 +83,19 @@ def "download here" [dest: string = "."] {
 	}
 }
 alias new-audio-sink = pactl load-module module-null-sink media.class=Audio/Sink sink_name=sink channel_map=stereo
+def restart-pipewire [] {
+	systemctl --user stop wireplumber.service
+	systemctl --user restart pipewire.socket
+	systemctl --user --now enable pipewire
+	systemctl --user start wireplumber.service
+} 
+def affinity [] {
+	job spawn {
+		$env.WINEPREFIX = $env.HOME + "/.affinity"
+		wine `~/.affinity/drive_c/Program Files/Affinity/Affinity/Affinity.exe`
+	}
+}
+
 
 # fun uwu
 def gmatrix  [] { cmatrix | lolcat -p 5 -F 0.0005 -i }

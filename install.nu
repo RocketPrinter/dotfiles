@@ -7,13 +7,21 @@ export def main [] {
 
 # Dependency installation script
 export def packages [] {
-	const packages = [arandr, alacritty, asciinema, bat, blender, bottom, chromium, copyq, cowsay, deluge-gtk, docker, dotnet-sdk, ffmpeg, filelight, flameshot, github-cli, gnome-keyring, gource, gwenview, helvum, hexyl, htop, i3-wm, i3lock-color, krita, lolcat, lutris, lynx, micro, wild, nano, nemo, nemo-compare, nemo-fileroller, nemo-seahorse, neofetch, nmap, nushell, obsidian, pavucontrol, picom, piper, polybar, psensor, qalculate-gtk, reaper, rofi, rofimoji, rustup, sl, starship, steam, tailscale, telegram-desktop, thefuck, toilet, udiskie, xorg-apps, yt-dlp, lxappearance-gtk3, bluez, bluez-utils, gucharmap, jre-openjdk, tela-icon-theme, noto-fonts, noto-fonts-cjk, noto-fonts-emoji, noto-fonts-extra, ttf-nerd-symbols, ttf-nerd-symbols-common, ttf-opensans, ttf-symbola, smartmontools, p7zip, i3-wm, xss-lock, dunst, man-db, gdb, playerctl, traceroute, yt-dlp,  ntfs-3g, rsync, meld, yazi, zoxide, fd, termshark, binsider, gitui, btop, atuin, dragon-drop, xdotool, zellij]
+	const packages = [arandr, alacritty, asciinema, bat, blender, bottom, chromium, copyq, cowsay, deluge-gtk, docker, dotnet-sdk, ffmpeg, filelight, flameshot, github-cli, gnome-keyring, gource, gwenview, helvum, hexyl, htop, i3-wm, i3lock-color, krita, lolcat, lutris, lynx, micro, wild, nano, nemo, nemo-compare, nemo-fileroller, nemo-seahorse, neofetch, nmap, nushell, obsidian, pavucontrol, picom, piper, polybar, psensor, qalculate-gtk, reaper, rofi, rofimoji, rustup, sl, starship, steam, tailscale, telegram-desktop, thefuck, toilet, udiskie, xorg-apps, yt-dlp, lxappearance-gtk3, bluez, bluez-utils, gucharmap, jre-openjdk, tela-icon-theme, noto-fonts, noto-fonts-cjk, noto-fonts-emoji, noto-fonts-extra, ttf-nerd-symbols, ttf-nerd-symbols-common, ttf-opensans, ttf-symbola, smartmontools, p7zip, i3-wm, xss-lock, dunst, man-db, gdb, playerctl, traceroute, yt-dlp,  ntfs-3g, rsync, meld, yazi, zoxide, fd, termshark, binsider, gitui, btop, atuin, dragon-drop, xdotool, zellij, ly, usb_modeswitch, usbutils, imagemagick, nautilus]
 
 	if (which paru | length) == 0 { install-paru }
 	paru -Sy --needed ...$packages
 
 	mkdir .local/share/atuin
 	atuin init nu | save .local/share/atuin/init.nu
+
+	sudo systemctl enable ly.service
+
+	sudo systemctl enable systemd-resolved.service
+	sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+	ya pkg add yazi-rs/plugins:mount yazi-rs/plugins:chmod yazi-rs/plugins:zoom yazi-rs/plugins:smart-paste yazi-rs/plugins:diff # resize requires extra/imagemagick
+	
 }
 
 export def aur [] {
