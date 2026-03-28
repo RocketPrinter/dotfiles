@@ -121,7 +121,7 @@ def apply-file [rec: record, vars: record] {
 	if not $rec.template {
 		# we check that we aren't already pointing to the file
 		if $expanded_path != $store_path {
-			ln -s -b -v --suffix .backup $store_path $concrete_path
+			ln -srbv --suffix .backup $store_path $concrete_path
 		}
 	} else {
 		let generated_path = to-generated-path $rec.path
@@ -143,7 +143,7 @@ def apply-file [rec: record, vars: record] {
 
 		# we check that we aren't already pointing to the file
 		if $expanded_path != $generated_path {
-			ln -s -b --suffix .backup $generated_path $concrete_path	
+			ln -srbv --suffix .backup $generated_path $concrete_path	
 		}
 	}
 }

@@ -236,6 +236,8 @@ exec_always --no-startup-id "pkill openrgb; openrgb --startminimized"
 
 exec_always --no-startup-id dunst
 
+exec --no-startup-id poweralertd
+
 exec --no-startup-id flameshot
 bindsym Print exec flameshot gui
 bindsym shift+Print exec flameshot gui -d 3000

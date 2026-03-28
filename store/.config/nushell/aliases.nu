@@ -11,8 +11,8 @@ alias zel    = zellij
 alias cat = bat
 
 # polybar
-def polybar-show-wifi [] { open --raw ~/.config/polybar/config.ini | str replace -r '直%{F-}' '直%{F-} %essid%' | save ~/.config/polybar/config.ini -f }
-def polybar-hide-wifi [] { open --raw ~/.config/polybar/config.ini | str replace '直%{F-} %essid%' '直%{F-}' | save ~/.config/polybar/config.ini -f }
+def polybar-show-wifi [] { open --raw ~/.config/polybar/config.ini | str replace -r '直%{F-}' '%{F-} %essid%' | save ~/.config/polybar/config.ini -f }
+def polybar-hide-wifi [] { open --raw ~/.config/polybar/config.ini | str replace '直%{F-} %essid%' '%{F-}' | save ~/.config/polybar/config.ini -f }
 
 # utilities
 alias btop = btop --force-utf
@@ -73,7 +73,7 @@ def "term split" [-h, -v] {
 		[false, true] => { i3-msg split v }
 	}
 
-	bash -c "alacritty &"
+	job spawn { alacritty }
 }
 def "download here" [dest: string = "."] {
 	watch ~/downloads {|op, path, new_path|
