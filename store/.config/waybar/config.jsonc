@@ -10,9 +10,11 @@
         "modules-left": ["sway/workspaces", "sway/mode", "mpris", "privacy"],
         "modules-center": ["group/center"],
         "modules-right": [
-            "backlight", "battery",
-            // bt
-            "group/audio", "group/sys",/* + temp + disk */ "sway/language", "tray"],
+            "group/laptop",
+            "group/audio",
+            "group/sys",
+            "sway/language",
+            "tray"],
     },
     {
         "name": "side",

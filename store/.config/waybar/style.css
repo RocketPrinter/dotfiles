@@ -119,16 +119,14 @@ window#waybar.hidden {
     border-radius: 0;
 }
 
-/* TODO */
 #battery.warning:not(.charging) {
     color: #ffbe61;
 }
 
-/* TODO */
 #battery.critical:not(.charging) {
-    background-color: @important;
+    color: @important;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -136,8 +134,7 @@ window#waybar.hidden {
 
 @keyframes blink {
     to {
-        background-color: white;
-        color: #000000;
+        color: white;
     }
 }
 

@@ -1,0 +1,16 @@
+{
+    // "temperature": {
+    //     "interval": 5,
+    //     "hwmond-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp3_input", // temp of first CCD die
+
+    //     "warning-threshold": 70,
+    //     "critical-threshold": 90,
+
+    //     "format": "  {temperatureC}󰔄",
+    //     "format-warning":"  {temperatureC}󰔄",
+    //     "format-critical":"  {temperatureC}󰔄",
+    //     "tooltip": "Tccd1 {temperatureC}󰔄",
+
+    //     "on-click-right": "psensor",
+    // },
+}

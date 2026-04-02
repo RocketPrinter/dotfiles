@@ -99,26 +99,28 @@
     "group/laptop": {
         "orientation": "inherit",
         "drawer": {},
-        "modules": ["laptop"],
+        "modules": ["battery", "backlight"],
     },
 
     "battery": {
+        "interval": 10,
         "states": {
             "warning": 30,
-            "critical": 15
+            "critical": 10
         },
         "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", "", ""],
-    	"on-update": "battery-warning.nu",
+        "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    	// "on-update": "battery-warning.nu",
     },
 
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
         "format-icons": ["","","","", "", "", ""],
+        "smooth-scrolling-threshold": 0.6,
     },
 
     "group/audio": {
@@ -132,6 +134,7 @@
         "reverse-scrolling": 1,
 		"max-volume": 200,
 		"scroll-step": 2,
+		"smooth-scrolling-threshold": 0.6,
 
         "format": "{icon} {volume}%",
         "format-muted": "婢",
@@ -155,6 +158,7 @@
 
     "pulseaudio#input": {
         "reverse-scrolling": 1,
+        "smooth-scrolling-threshold": 0.6,
 
         "format": "{format_source}",
         "format-source": " {volume}%",
