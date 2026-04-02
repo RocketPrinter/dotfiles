@@ -1,0 +1,31 @@
+[
+    {
+        "name": "main",
+        "output": "!HDMI-A-1",
+
+        "include": ["modules.jsonc", "device.jsonc",],
+        "margin": "2 10 2 10",
+        "reload_style_on_change": true,
+
+        "modules-left": ["sway/workspaces", "sway/mode", "mpris", "privacy"],
+        "modules-center": ["group/center"],
+        "modules-right": [
+            "backlight", "battery",
+            // bt
+            "group/audio", "group/sys",/* + temp + disk */ "sway/language", "tray"],
+    },
+    {
+        "name": "side",
+        "output": "HDMI-A-1",
+
+        "include": ["modules.jsonc", "device.jsonc",],
+        "margin": "2 10 2 10",
+        "reload_style_on_change": true,
+
+        "modules-left": ["sway/workspaces", "sway/mode", "mpris"],
+        "modules-center": ["group/center"],
+        "modules-right": [
+            "backlight", "battery", "group/audio", "tray"
+        ],
+    }
+]

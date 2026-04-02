@@ -1,0 +1,15 @@
+output DP-2 {
+	mode 2560x1440 
+	pos 1080 240 
+	adaptive_sync off 
+	background backgrounds/background.png fill
+	scale 1
+}
+
+output HDMI-A-1 {
+	mode 1920x1080 
+	pos 0 0 
+	transform 270 
+	background backgrounds/background2.png fill
+	scale 1
+}

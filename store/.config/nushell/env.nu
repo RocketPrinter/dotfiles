@@ -35,8 +35,7 @@ $env.PROMPT_COMMAND_RIGHT = {||
     ([$last_exit_code, (char space), $time_segment] | str join)
 }
 use std "path add"
-path add ".cargo/bin" ".dotnet/tools"
-
+path add ".cargo/bin" ".dotnet/tools" "/var/lib/flatpak/exports/bin" $"($env.HOME)/.local/share/flatpak/exports/bin" # $"($env.XDG_DATA_HOME)/flatpak/exports/bin"
 
 # $env.LANG = "LANG=en_US.UTF-8"
 $env.EDITOR = "micro"

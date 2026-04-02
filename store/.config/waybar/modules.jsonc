@@ -1,0 +1,230 @@
+{
+    // LEFT
+    "sway/workspaces": {
+
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "sway/language": {
+        "format": " {}",
+        "tooltip-format": "{flag} {long} {variant}",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    },
+
+    "mpris": {
+        "format": "{player_icon} {status_icon} {dynamic}",
+        "tooltip-format": "{player} {position}/{length}\n{album}",
+
+        "dynamic-order": ["title", "artist"],
+        "dynamic-importance-order": ["title", "artist"],
+        "title-len": 15,
+        "artist": 15,
+        "dynamic-len": 40,
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": "",
+        },
+
+        "player-icons": {
+            "default": "",
+            "firefox": "",
+            "spotify": "",
+        },
+    },
+
+    "privacy": {
+        "icon-spacing": 0,
+    	"icon-size": 14,
+    	"transition-duration": 250,
+    	"modules": [
+    		{
+    			"type": "screenshare",
+    			"tooltip": true,
+    			"tooltip-icon-size": 24
+    		},
+    		{
+    			"type": "audio-in",
+    			"tooltip": true,
+    			"tooltip-icon-size": 24
+    		}
+    	],
+    	"ignore-monitor": true,
+    	"ignore": [
+    		{
+    			"type": "audio-in",
+    			"name": "cava"
+    		},
+    		{
+    			"type": "screenshare",
+    			"name": "obs"
+    		}
+    	]
+    },
+
+
+
+    // MIDDLE
+    "group/center": {
+        "orientation": "inherit",
+        "drawer": {},
+        "modules": ["clock"],
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M}",
+        "locale": "en_GB.UTF-8", // used to set monday as first day, make sure to uncomment in /etc/locale-gen
+        "calendar": {
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "format": {
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-click-middle": "shift_reset",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    // https://github.com/liminchian/pomobar-rs
+
+
+
+    // RIGHT
+    "group/laptop": {
+        "orientation": "inherit",
+        "drawer": {},
+        "modules": ["laptop"],
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+    	"on-update": "battery-warning.nu",
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["","","","", "", "", ""],
+    },
+
+    "group/audio": {
+        "orientation": "inherit",
+        "drawer": {},
+        "modules": ["pulseaudio#output","pulseaudio#input",],
+    },
+
+    "pulseaudio#output": {
+        // "scroll-step": 1, // %, can be a float
+        "reverse-scrolling": 1,
+		"max-volume": 200,
+		"scroll-step": 2,
+
+        "format": "{icon} {volume}%",
+        "format-muted": "婢",
+
+        "format-bluetooth": "{icon}  {volume}%",
+
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["奄", "奔", "墳"]
+        },
+
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-click-middle": "helvum",
+    },
+
+    "pulseaudio#input": {
+        "reverse-scrolling": 1,
+
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-click-middle": "helvum",
+    },
+
+    "group/sys": {
+        "orientation": "inherit",
+        "drawer": {
+            "click-to-reveal": true,
+        },
+        "modules": [
+            "custom/sys-indicator",
+            "cpu",
+            "memory",
+            "custom/gpu",
+            "network",
+            "bluetooth",
+        ],
+    },
+
+    "custom/sys-indicator": {
+        "format": "",
+        "tooltip": false,
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": " {load:>3}%",
+    },
+
+    "memory": {
+        "interval": 2,
+        "format": " {used:0.1f}G",
+        "tooltip-format":"{total:0.1f}G",
+    },
+
+    "network": {
+        "interval": 2,
+        "format": " ? {ifname}",
+        "format-wifi": "   <small>{essid}</small> 󰇚{bandwidthDownBytes} 󰕒{bandwidthUpBytes}",
+        "format-ethernet": "   󰇚<small>{bandwidthDownBytes}</small> 󰕒<small>{bandwidthUpBytes}</small>",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format-wifi": "<big>{ifname}</big>\n{signalStrength}% {frequency}",
+        "tooltip-format-ethernet": "<big>{ifname}</big>\n{ipaddr}/{cidr}",
+        "max-length": 40,
+    },
+
+    "bluetooth": {
+        "format": "  {status}",
+        "format-connected": "  <small>{num_connections} conn</small>",
+        "format-connected-battery": "  <small>{num_connections} conn {device_battery_percentage}%</small>",
+        "format-off": " 󰂲",
+
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+        // todo: on-click-middle, on-click-right
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 0,
+        "show-passive-items": true,
+    },
+}

@@ -1,0 +1,195 @@
+@define-color background alpha(#383c4a, 0.8);
+@define-color border #c2c5aa;
+@define-color important #f53c3c;
+@define-color text white;
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Liberation Mono;
+    min-height: 20px;
+    min-width: 0px;
+}
+
+.module {
+    background: @background;
+    border: 1px solid @border;
+    border-radius: 10px;
+}
+
+label.module {
+    color: @text;
+}
+
+
+/* left */
+window#waybar {
+    background: transparent;
+    animation: 1s ease-out 0s 1 entry-transition;
+}
+
+@keyframes entry-transition {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces {
+    margin-right: 8px;
+    transition: none;
+}
+
+#workspaces button {
+    transition: none;
+    color: #9cA1Ac;
+    background: transparent;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    border-radius: inherit;
+    background: #9cA1Ac;
+}
+
+#workspaces button.focused {
+    color: @text;
+}
+
+#workspaces button.urgent {
+    color: @important;
+}
+
+#mode {
+    padding: 0px 10px 0px 10px;
+    margin-right: 8px;
+    color: @important;
+}
+
+#mpris {
+    padding: 0px 10px 0px 10px;
+    margin-right: 8px;
+}
+
+#privacy {
+    background: @background;
+    border: 1px solid @border;
+    border-radius: 10px;
+    padding: 0px 5px 0px 5px;
+}
+
+#privacy-item {
+    padding: 0px 5px 0px 5px;
+}
+
+
+
+/* middle */
+#clock {
+    padding: 0px 15px 0px 15px;
+}
+
+
+
+
+
+
+/* right */
+#laptop {
+    background: @background;
+    border: 1px solid @border;
+    border-radius: 10px;
+    padding: 0px 10px 0px 10px;
+    margin-right: 8px;
+}
+
+#laptop .module {
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+
+/* TODO */
+#battery.warning:not(.charging) {
+    color: #ffbe61;
+}
+
+/* TODO */
+#battery.critical:not(.charging) {
+    background-color: @important;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: white;
+        color: #000000;
+    }
+}
+
+#backlight {
+    padding-left: 10px;
+}
+
+#audio {
+    background: @background;
+    border: 1px solid @border;
+    border-radius: 10px;
+    padding: 0px 10px 0px 10px;
+    margin-right: 8px;
+}
+
+#audio .module {
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+
+#pulseaudio.input {
+    padding-left: 10px;
+}
+
+#sys {
+    background: @background;
+    border: 1px solid @border;
+    border-radius: 10px;
+    padding: 0px 10px 0px 10px;
+    margin-right: 8px;
+}
+
+#sys .module {
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+
+#temperature.warning {
+    background-color: darkorange;
+}
+
+#temperature.critical {
+    background-color: red;
+}
+
+#language {
+    padding: 0px 10px 0px 10px;
+    margin-right: 8px;
+}
+
+#tray {
+    padding: 0px 10px 0px 10px;
+}

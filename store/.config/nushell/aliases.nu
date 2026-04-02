@@ -96,10 +96,12 @@ def affinity [] {
 	}
 }
 
+def startsway [] {
+	sway --unsupported-gpu
+}
 
-# fun uwu
+# fun
 def gmatrix  [] { cmatrix | lolcat -p 5 -F 0.0005 -i }
-def gay      [] { echo "So gay~~" | toilet --rainbow }
 def owo      [] { echo "OwO" | toilet --rainbow }
 def uwu      [] { echo "UwU" | toilet --rainbow }
 def hello    [] { echo "Hello!" | toilet --rainbow }

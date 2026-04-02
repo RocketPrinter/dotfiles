@@ -7,7 +7,7 @@ export def main [] {
 
 # Dependency installation script
 export def packages [] {
-	const packages = [arandr, alacritty, asciinema, bat, blender, bottom, chromium, copyq, cowsay, deluge-gtk, docker, dotnet-sdk, ffmpeg, filelight, flameshot, github-cli, gnome-keyring, gource, gwenview, helvum, hexyl, htop, i3-wm, i3lock-color, krita, lolcat, lutris, lynx, micro, wild, nano, nemo, nemo-compare, nemo-fileroller, nemo-seahorse, neofetch, nmap, nushell, obsidian, pavucontrol, picom, piper, polybar, psensor, qalculate-gtk, reaper, rofi, rofimoji, rustup, sl, starship, steam, tailscale, telegram-desktop, thefuck, toilet, udiskie, xorg-apps, yt-dlp, lxappearance-gtk3, bluez, bluez-utils, gucharmap, jre-openjdk, tela-icon-theme, noto-fonts, noto-fonts-cjk, noto-fonts-emoji, noto-fonts-extra, ttf-nerd-symbols, ttf-nerd-symbols-common, ttf-opensans, ttf-symbola, smartmontools, p7zip, i3-wm, xss-lock, dunst, man-db, gdb, playerctl, traceroute, yt-dlp,  ntfs-3g, rsync, meld, yazi, zoxide, fd, termshark, binsider, gitui, btop, atuin, dragon-drop, xdotool, zellij, ly, usb_modeswitch, usbutils, imagemagick, nautilus]
+	const packages = [arandr, alacritty, asciinema, bat, blender, bottom, chromium, copyq, cowsay, deluge-gtk, docker, dotnet-sdk, ffmpeg, filelight, flameshot, github-cli, gnome-keyring, gource, gwenview, helvum, hexyl, htop, i3-wm, i3lock-color, krita, lolcat, lutris, lynx, micro, wild, nano, nemo, nemo-compare, nemo-fileroller, nemo-seahorse, neofetch, nmap, nushell, obsidian, pavucontrol, picom, piper, polybar, psensor, qalculate-gtk, reaper, rofi, rofimoji, rustup, sl, starship, steam, tailscale, telegram-desktop, thefuck, toilet, udiskie, xorg-apps, yt-dlp, lxappearance-gtk3, bluez, bluez-utils, gucharmap, jre-openjdk, tela-icon-theme, noto-fonts, noto-fonts-cjk, noto-fonts-emoji, noto-fonts-extra, ttf-nerd-symbols, ttf-nerd-symbols-common, ttf-opensans, ttf-symbola, smartmontools, p7zip, i3-wm, xss-lock, dunst, man-db, gdb, playerctl, traceroute, yt-dlp,  ntfs-3g, rsync, meld, yazi, zoxide, fd, termshark, binsider, gitui, btop, atuin, dragon-drop, xdotool, zellij, ly, usb_modeswitch, usbutils, imagemagick, nautilus, xorg-xwayland, sway, swaybg, swaylock, waybar, grim, xdg-desktop-portal, xdg-desktop-portal-gtk, xdg-desktop-portal-wlr, otf-font-awesome, cava]
 
 	if (which paru | length) == 0 { install-paru }
 	paru -Sy --needed ...$packages
@@ -25,7 +25,7 @@ export def packages [] {
 }
 
 export def aur [] {
-	const aur_packages = [paru, downgrade, onlyoffice-bin, clion, graphite-gtk-theme, xkb-switch, selectdefaultapplication-git, i3lock-color, insomnia-bin, vesktop-bin, zen-browser, boomer-git]
+	const aur_packages = [paru, downgrade, onlyoffice-bin, clion, graphite-gtk-theme, xkb-switch, selectdefaultapplication-git, i3lock-color, insomnia-bin, vesktop-bin, zen-browser, boomer-git, woomer]
 
 	if (which paru | length) == 0 { install-paru }
 	for pkg in $aur_packages {
